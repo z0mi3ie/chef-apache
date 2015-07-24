@@ -1,11 +1,8 @@
 package "apache2"
 
-file "/var/www/html/index.html" do
-  action :create
-  content "<h1>Hello, world!</h1>
-  <h3>IP ADDRESS: #{node["ipaddress"]}</h3>
-  <h3>Hostname  : #{node["hostname"]}</h3>
-  "
+
+template "/var/www/html/index.html" do
+  source "index.html.erb"
 end
 
 service "apache2" do
